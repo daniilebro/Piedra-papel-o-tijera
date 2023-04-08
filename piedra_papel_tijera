@@ -1,0 +1,68 @@
+import random
+
+opcciones=("piedra","papel","tijera")
+
+ganaPC= 0
+ganaUsurio= 0
+
+numRondas = 1
+
+while True:
+    print("*"*20)
+    print("RONDA", numRondas)
+    print("*"*20)
+
+    print("Veces que ganó la compuradora:  ",ganaPC)
+    print("Tú has ganado:  ",ganaUsurio)
+
+    turnoUsuario= input("Elige piedra, papel o tijera:  ")
+    turnoUsuario= turnoUsuario.lower() # Pasa todo texto a minusc
+
+    numRondas += 1
+
+    if not turnoUsuario in opcciones:
+      print("Opción no valida")
+      continue
+
+    turnoPC= random.choice(opcciones) #Elegir algo baso de una lista o tupla
+
+    print("***PC",turnoPC)
+    print("***Yo 😋",turnoUsuario)
+
+    if turnoUsuario==turnoPC:
+      print("¡Empate 😋!")
+    elif turnoUsuario == "piedra":
+      if turnoPC=="tijera":
+          print("PIEDRA gana a TIJERA")
+          print("¡Le ganaste 🥳!")
+          ganaUsurio += 1
+      else:
+          print("PAPEL gana a PIEDRA")
+          print("Ganó la computadora 🙄")
+          ganaUsurio += 1
+    elif turnoUsuario == "papel":
+      if turnoPC=="piedra":
+          print("PAPEL gana a PIEDRA")
+          print("¡Le ganaste 🥳!")
+          ganaUsurio += 1
+      else:
+          print("TIJERA gana a PAPEL")
+          print("Ganó la computadora 🙄")
+          ganaUsurio += 1
+    elif turnoUsuario == "tijera":
+      if turnoPC=="papel":
+          print("TIJERA gana a PAPEL")
+          print("¡Le ganaste 🥳!")
+          ganaUsurio += 1
+      else:
+          print("PIEDRA gana a PAPEL")
+          print("Ganó la computadora 🙄")
+          ganaUsurio += 1
+
+    if ganaPC == 2:
+      print("----- El ganador es la computadora 🤷‍♀️🤷‍♂️-----")
+      break
+
+    if ganaUsurio == 2:
+      print("-----El ganador eres TÚ 🥂-----")
+      break  
